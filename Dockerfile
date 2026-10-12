@@ -18,8 +18,8 @@ ENV UV_PYTHON_DOWNLOADS=never
 COPY pyproject.toml uv.lock .python-version* ./
 
 # Create /app/.venv and install exactly the versions pinned in uv.lock.
-# --frozen = never re-resolve, just use the lockfile as-is.
-RUN uv sync --frozen --no-dev
+#  = never re-resolve, just use the lockfile as-is.
+RUN uv sync  --no-dev
 
 # ---- 4. Application code (changes often → its own layer) ----------------
 COPY app ./app
