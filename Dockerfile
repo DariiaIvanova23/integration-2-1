@@ -14,7 +14,8 @@ WORKDIR /app
 # Copy ONLY the dependency manifests first. Docker caches each step:
 # this one re-runs only when these two files change — not on every
 # code edit.
-COPY pyproject.toml uv.lock ./
+ENV UV_PYTHON_DOWNLOADS=never
+COPY pyproject.toml uv.lock .python-version* ./
 
 # Create /app/.venv and install exactly the versions pinned in uv.lock.
 # --frozen = never re-resolve, just use the lockfile as-is.
